@@ -3,14 +3,14 @@ import { ContactItem } from '../ContactItem/ContactItem';
 import { Ul, Li } from './Contacts.styled';
 
 export const Contacts = () => {
-  const contacts = useSelector(state => state.contacts);
+  const { items } = useSelector(state => state.contacts);
   const filter = useSelector(state => state.filter);
-  console.log(typeof contacts);
-  console.log(contacts);
+  console.log(typeof items);
+  console.log(items);
   console.log(typeof filter);
   const getFilteredContacts = () => {
     const normalaizedFilter = filter.toLowerCase();
-    return contacts.filter(contact =>
+    return items.filter(contact =>
       contact.name.toLowerCase().includes(normalaizedFilter)
     );
   };
@@ -25,7 +25,7 @@ export const Contacts = () => {
             <ContactItem
               id={contact.id}
               name={contact.name}
-              number={contact.number}
+              number={contact.phone}
             />
           </Li>
         );

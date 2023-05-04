@@ -34,6 +34,7 @@ export const ContactForm = () => {
   const handleSubmit = event => {
     event.preventDefault();
     const form = event.target;
+
     const nameIncludes = items.find(
       contact =>
         contact.name.toLowerCase() === form.elements.name.value.toLowerCase()
@@ -41,7 +42,7 @@ export const ContactForm = () => {
     if (nameIncludes) {
       return alert(`${form.elements.name.value} is already in contacts`);
     }
-    dispatch(addContact(form.elements.name.value, form.elements.number.value));
+    dispatch(addContact({ name, phone: number }));
     reset();
     form.reset();
   };

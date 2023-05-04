@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchContacts } from 'redux/contacts/contactsOperations';
 import { selectError, selectIsLoading } from 'redux/contacts/contactsSelectors';
+import { Toaster } from 'react-hot-toast';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -26,6 +27,15 @@ export const App = () => {
         <Filter />
         {isLoading && !error && <b>Request in progress...</b>}
         <Contacts />
+        <Toaster
+          toastOptions={{
+            style: {
+              border: '2px solid #72b372',
+              padding: '15px',
+              marginTop: '30px',
+            },
+          }}
+        />
       </Wrap>
     </>
   );
